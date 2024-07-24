@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+
+    @using (Html.BeginForm("submit", "Home"))
+    {
+        <div class="form-row">
+            <div class="col">
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName">
+                <div class="invalid-feedback">Enter a first name.</div>
+            </div>
+            <div class="col">
+                <label for="lastName">Age:</label>
+                <input type="text" class="form-control" name="age">
+                <div class="invalid-feedback">Enter a last name.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputGender">Gender:</label>
+            <label for="inputGender">Male</label>
+            <input checked="checked"
+                   id="Gender"
+                   name="Gender"
+                   type="radio"
+                   value="Male" />
+            <label for="inputGender">Female</label>
+            <input id="Gender"
+                   name="Gender"
+                   type="radio"
+                   value="Female" />
+        </div>
+
+        <div class="form-group">
+
+            <select class="form-control" id="Country" name="Country">
+                <option value="Selected">Select country</option>
+                <option value="Jordan">Jordan</option>
+                <option value="Palastine">Palastine</option>
+                <option value="Egypt">Egypt</option>
+            </select>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary btn-lg">Send</button>
+    }
+
+@if (ViewBag.FirstName!=null && ViewBag.age!=null && ViewBag.radio != null && ViewBag.drop != null) {
+    <table>
+        <form>
+        <tr>
+            <td>
+                <label for="name">
+                    Name
+                </label>
+            </td>
+            <td>
+                <input type="text" id="name" value="@ViewBag.FirstName "/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="age">
+                    Age
+                </label>
+            </td>
+            <td>
+                <input type="text" id="age" value=" @ViewBag.age "/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="gender">
+                    Gender
+                </label>
+            </td>
+            <td>
+                <input type="gender" id="gender"   value=" @ViewBag.radio "/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="country">
+                    Country
+                </label>
+            </td>
+            <td>
+                <input type="country" id="country" value=" @ViewBag.drop "/>
+            </td>
+        </tr>
+        </form>
+    </table>
+}
+</main>

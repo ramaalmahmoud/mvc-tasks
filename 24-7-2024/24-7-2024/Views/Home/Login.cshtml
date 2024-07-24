@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("send", "Home"))
+{
+    <div class="form-row">
+        <div class="col">
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" id="firstName" name="firstName">
+            <div class="invalid-feedback">Enter a first name.</div>
+        </div>
+        <div class="col">
+            <label for="Email">Email:</label>
+            <input type="Email" class="form-control" name="Email">
+            <div class="invalid-feedback">Enter a Email.</div>
+        </div>
+    </div>
+
+  
+
+   
+
+
+
+    <button type="submit" class="btn btn-primary btn-lg">Send</button>
+}
