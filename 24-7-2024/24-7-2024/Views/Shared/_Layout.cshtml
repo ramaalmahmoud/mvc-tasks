@@ -22,7 +22,7 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     @if (ViewBag.isValid == true)
                     {
-                    <li>@Html.ActionLink("Profile", "Profile", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Profile", "Profile", "Home",  new { username = Session["UserName"] }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Logout", "Logout", "Home", new { area = "" }, new { @class = "nav-link" })</li>
 
                     }

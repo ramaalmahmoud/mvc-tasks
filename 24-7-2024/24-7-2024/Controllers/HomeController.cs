@@ -88,6 +88,7 @@ namespace _24_7_2024.Controllers
                 if (arr[i] == ViewBag.name && arr[i+1] == ViewBag.email)
                 {
                     ViewBag. isValid = true;
+                    Session["UserName"] = form["firstName"];
                     return View("Index");
 
                 }
@@ -102,6 +103,11 @@ namespace _24_7_2024.Controllers
 
 
             return View();
+        }
+        public ActionResult Logout()
+        {
+           
+            return RedirectToAction("Login", "Home");
         }
     }
 }
