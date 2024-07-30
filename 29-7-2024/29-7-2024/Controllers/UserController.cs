@@ -37,7 +37,7 @@ namespace _29_7_2024.Controllers
                 authCookie.Values["UserId"] = r.Id.ToString();
                 authCookie.Values["Username"] = r.Name;
 
-                
+                authCookie.Values["Image"] = r.Image;
                 Response.Cookies.Add(authCookie);
 
                 return View("Index");
@@ -100,23 +100,24 @@ namespace _29_7_2024.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Email,Password")] User  user, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "ID,Name,Email,Password,Image")] User  user, HttpPostedFileBase upload)
         {
 
 
             if (upload != null && upload.ContentLength > 0)
             {
                 var fileName = Path.GetFileName(upload.FileName);
-                var path = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
 
-                if (!Directory.Exists(Server.MapPath("~/Images/")))
+                if (!Directory.Exists(Server.MapPath("~/Content/Images/")))
                 {
-                    Directory.CreateDirectory(Server.MapPath("~/Images/"));
+                    Directory.CreateDirectory(Server.MapPath("~/Content/Images/"));
                 }
 
                 upload.SaveAs(path);
                 user.Image = fileName;
             }
+
 
             db.Entry(user).State = EntityState.Modified;
             db.SaveChanges();
@@ -151,17 +152,18 @@ namespace _29_7_2024.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ResetPassword(User user, string old, string newpass ,int? id)
+        public ActionResult ResetPassword(string oldPassword, string newPassword, [Bind (Include ="password")]User user)
         {
-            var userInDb = db.Users.Find(id);
-            if (userInDb.Password != old)
+            int userId = int.Parse(Request.Cookies["UserCookie"]["UserId"]);
+            var userInDb = db.Users.Find(userId);
+            if (userInDb.Password != oldPassword)
             {
                
                 return View(user); // Return the view with the current user data
             }
-            if (!string.IsNullOrEmpty(newpass))
+          else  
             {
-                userInDb.Password = newpass;
+                userInDb.Password = newPassword;
             }
             db.SaveChanges();
             return RedirectToAction("Details", new { id = userInDb.Id });
@@ -169,16 +171,7 @@ namespace _29_7_2024.Controllers
         }
         public ActionResult Logout()
         {
-            // Clear the cookie
-            if (Request.Cookies["UserCookie"] != null)
-            {
-                var cookie = new HttpCookie("UserCookie")
-                {
-                    Expires = DateTime.Now.AddDays(-1)
-                };
-                Response.Cookies.Add(cookie);
-            }
-            return RedirectToAction("Index");
+            return RedirectToAction("Login", "User");
         }
     }
 }
