@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace _29_7_2024.Controllers
 {
-   
+
     public class UserController : Controller
     {
         private UsersEntities db = new UsersEntities();
@@ -26,13 +26,13 @@ namespace _29_7_2024.Controllers
         [HttpPost]
         public ActionResult Login(User user)
         {
-          
-            var r= db.Users.Where(model => model.Email==user.Email && model.Password == user.Password).FirstOrDefault();
 
-            
-            if (r!=null )
+            var r = db.Users.Where(model => model.Email == user.Email && model.Password == user.Password).FirstOrDefault();
+
+
+            if (r != null)
             {
-               
+                Session["is_login"] = true;
                 HttpCookie authCookie = new HttpCookie("UserCookie");
                 authCookie.Values["UserId"] = r.Id.ToString();
                 authCookie.Values["Username"] = r.Name;
@@ -92,17 +92,18 @@ namespace _29_7_2024.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(int? id)
         {
+            Session["Image"] = db.Users.Find(id).Image;
             return View(db.Users.Where(x => x.Id == id).FirstOrDefault());
         }
 
         // POST: User/Edit/5
-       
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Email,Password,Image")] User  user, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "ID,Name,Email,Password")] User user, HttpPostedFileBase upload)
         {
-
+            string x = Session["Image"].ToString();
 
             if (upload != null && upload.ContentLength > 0)
             {
@@ -116,6 +117,13 @@ namespace _29_7_2024.Controllers
 
                 upload.SaveAs(path);
                 user.Image = fileName;
+            }
+
+           else if (upload == null)
+            {
+               var fileName = Path.GetFileName(x);
+                user.Image = fileName;
+
             }
 
 
@@ -152,16 +160,16 @@ namespace _29_7_2024.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ResetPassword(string oldPassword, string newPassword, [Bind (Include ="password")]User user)
+        public ActionResult ResetPassword(string oldPassword, string newPassword, [Bind(Include = "password")] User user)
         {
             int userId = int.Parse(Request.Cookies["UserCookie"]["UserId"]);
             var userInDb = db.Users.Find(userId);
             if (userInDb.Password != oldPassword)
             {
-               
+
                 return View(user); // Return the view with the current user data
             }
-          else  
+             else if(newPassword!=null&& newPassword!="")
             {
                 userInDb.Password = newPassword;
             }
@@ -171,6 +179,8 @@ namespace _29_7_2024.Controllers
         }
         public ActionResult Logout()
         {
+            Session["is_login"] = false;
+
             return RedirectToAction("Login", "User");
         }
     }
