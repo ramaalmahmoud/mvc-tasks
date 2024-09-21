@@ -7,13 +7,13 @@ namespace _18_9_2024.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class lsskl : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(lsskl));
         
         string IMigrationMetadata.Id
         {
-            get { return "202409180555333_InitialCreate"; }
+            get { return "202409191047584_lsskl"; }
         }
         
         string IMigrationMetadata.Source

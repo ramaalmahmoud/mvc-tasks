@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5FC33828-ADD9-4410-A6D9-39090A2B6A93}</ProjectGuid>
+    <ProjectGuid>{27B0EB16-EAC5-4F8A-8983-A1ED030D39B1}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_18_9_2024</RootNamespace>
-    <AssemblyName>18-9-2024</AssemblyName>
+    <RootNamespace>_19_9_2024</RootNamespace>
+    <AssemblyName>19-9-2024</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -127,46 +127,25 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AssignmentsController.cs" />
+    <Compile Include="Controllers\ClassesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\StudentDetailsController.cs" />
     <Compile Include="Controllers\StudentsController.cs" />
-    <Compile Include="Controllers\TeachersController.cs" />
+    <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202409190958479_createtables.cs" />
-    <Compile Include="Migrations\202409190958479_createtables.Designer.cs">
-      <DependentUpon>202409190958479_createtables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202409191028368_create.cs" />
-    <Compile Include="Migrations\202409191028368_create.Designer.cs">
-      <DependentUpon>202409191028368_create.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202409191032438_EditTable.cs" />
-    <Compile Include="Migrations\202409191032438_EditTable.Designer.cs">
-      <DependentUpon>202409191032438_EditTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202409191034520_Edit2.cs" />
-    <Compile Include="Migrations\202409191034520_Edit2.Designer.cs">
-      <DependentUpon>202409191034520_Edit2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202409191047584_lsskl.cs" />
-    <Compile Include="Migrations\202409191047584_lsskl.Designer.cs">
-      <DependentUpon>202409191047584_lsskl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202409191100398_dnjjd.cs" />
-    <Compile Include="Migrations\202409191100398_dnjjd.Designer.cs">
-      <DependentUpon>202409191100398_dnjjd.cs</DependentUpon>
+    <Compile Include="Migrations\202409201123333_InitialCreate.cs" />
+    <Compile Include="Migrations\202409201123333_InitialCreate.Designer.cs">
+      <DependentUpon>202409201123333_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Assignment.cs" />
+    <Compile Include="Models\Classes.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\SchoolDBContext.cs" />
     <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\StudentDetails.cs" />
-    <Compile Include="Models\Teacher.cs" />
+    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -220,31 +199,26 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Students\Create.cshtml" />
-    <Content Include="Views\Students\Delete.cshtml" />
-    <Content Include="Views\Students\Details.cshtml" />
-    <Content Include="Views\Students\Edit.cshtml" />
-    <Content Include="Views\Students\Index.cshtml" />
-    <Content Include="Views\Teachers\Create.cshtml" />
-    <Content Include="Views\Teachers\Delete.cshtml" />
-    <Content Include="Views\Teachers\Details.cshtml" />
-    <Content Include="Views\Teachers\Edit.cshtml" />
-    <Content Include="Views\Teachers\Index.cshtml" />
-    <Content Include="Views\Assignments\Create.cshtml" />
-    <Content Include="Views\Assignments\Delete.cshtml" />
-    <Content Include="Views\Assignments\Details.cshtml" />
-    <Content Include="Views\Assignments\Edit.cshtml" />
-    <Content Include="Views\Assignments\Index.cshtml" />
+    <Content Include="Views\Classes\Create.cshtml" />
+    <Content Include="Views\Classes\Delete.cshtml" />
+    <Content Include="Views\Classes\Edit.cshtml" />
+    <Content Include="Views\Classes\Index.cshtml" />
     <Content Include="Views\Courses\Create.cshtml" />
     <Content Include="Views\Courses\Delete.cshtml" />
     <Content Include="Views\Courses\Details.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
-    <Content Include="Views\StudentDetails\Create.cshtml" />
-    <Content Include="Views\StudentDetails\Delete.cshtml" />
-    <Content Include="Views\StudentDetails\Details.cshtml" />
-    <Content Include="Views\StudentDetails\Edit.cshtml" />
-    <Content Include="Views\StudentDetails\Index.cshtml" />
+    <Content Include="Views\Students\Create.cshtml" />
+    <Content Include="Views\Students\Delete.cshtml" />
+    <Content Include="Views\Students\Details.cshtml" />
+    <Content Include="Views\Students\Edit.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Classes\Details.cshtml" />
+    <Content Include="Views\Classes\Tasks.cshtml" />
+    <Content Include="Views\Tasks\Create.cshtml" />
+    <Content Include="Views\Tasks\Delete.cshtml" />
+    <Content Include="Views\Tasks\Details.cshtml" />
+    <Content Include="Views\Tasks\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -277,23 +251,8 @@
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202409190958479_createtables.resx">
-      <DependentUpon>202409190958479_createtables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202409191028368_create.resx">
-      <DependentUpon>202409191028368_create.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202409191032438_EditTable.resx">
-      <DependentUpon>202409191032438_EditTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202409191034520_Edit2.resx">
-      <DependentUpon>202409191034520_Edit2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202409191047584_lsskl.resx">
-      <DependentUpon>202409191047584_lsskl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202409191100398_dnjjd.resx">
-      <DependentUpon>202409191100398_dnjjd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202409201123333_InitialCreate.resx">
+      <DependentUpon>202409201123333_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -312,9 +271,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57839</DevelopmentServerPort>
+          <DevelopmentServerPort>51242</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57839/</IISUrl>
+          <IISUrl>http://localhost:51242/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

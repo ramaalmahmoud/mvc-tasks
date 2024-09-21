@@ -10,8 +10,13 @@ namespace _18_9_2024.Models
     {
         [Key]
         public int ID { get; set; }
+
         [Required]
         public string Name { get; set; }
-        public string  Class { get; set; }
+
+        public string Class { get; set; }
+
+        // Navigation property to StudentDetails
+        public StudentDetails Detail { get; set; }
     }
 }

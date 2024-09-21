@@ -1,0 +1,91 @@
+﻿@model IEnumerable<_19_9_2024.Models.Course>
+
+@{
+    ViewBag.Title = "Courses";
+}
+
+<section class="vh-100" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="text-center mb-5">
+                    <h2>Courses</h2>
+                    <p>
+                        @Html.ActionLink("Create New Course", "Create", null, new { @class = "btn btn-light" })
+                    </p>
+                </div>
+
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card shadow-2-strong" style="border-radius: 1rem; background-image: url('data:image/jpeg;base64,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'); background-size: cover; color: #fff;">
+                                <div class="card-body" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 1rem;">
+                                    <h5 class="card-title">@item.Name</h5>
+                                    <p class="card-text">@item.Description</p>
+
+                                    <div class="d-flex justify-content-between">
+                                        <a href="@Url.Action("Edit", "Courses", new { id = item.Id })" class="btn btn-light">Edit</a>
+                                        <a href="@Url.Action("Details", "Courses", new { id = item.Id })" class="btn btn-light">Details</a>
+                                        <a href="@Url.Action("Delete", "Courses", new { id = item.Id })" class="btn btn-light">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    body {
+        background-color: #f1f3f6;
+        font-family: 'Arial', sans-serif;
+    }
+
+    h2 {
+        color: #fff;
+    }
+
+    .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+        border: none;
+        height: 300px; /* Adjust height for background image */
+        position: relative;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-light {
+        color: #343a40;
+        border: none;
+        font-weight: 600;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-light:hover {
+        background-color: #f8f9fa;
+        color: #007bff;
+    }
+
+    .card-body {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* Responsive adjustments for smaller screens */
+    media (max-width: 768px) {
+        .col-md-4 {
+            margin-bottom: 20px;
+        }
+    }
+</style>

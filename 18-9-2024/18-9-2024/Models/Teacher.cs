@@ -10,5 +10,6 @@ namespace _18_9_2024.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+        public ICollection<Course> Courses { get; set; }
     }
 }

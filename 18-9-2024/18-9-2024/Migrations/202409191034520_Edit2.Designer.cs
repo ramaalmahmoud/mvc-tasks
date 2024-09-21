@@ -7,13 +7,13 @@ namespace _18_9_2024.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class AddDescriptionToAssignment : IMigrationMetadata
+    public sealed partial class Edit2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddDescriptionToAssignment));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Edit2));
         
         string IMigrationMetadata.Id
         {
-            get { return "202409180654495_AddDescriptionToAssignment"; }
+            get { return "202409191034520_Edit2"; }
         }
         
         string IMigrationMetadata.Source

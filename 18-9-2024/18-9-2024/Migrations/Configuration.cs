@@ -1,5 +1,6 @@
 ﻿namespace _18_9_2024.Migrations
 {
+    using _18_9_2024.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,10 +15,13 @@
 
         protected override void Seed(_18_9_2024.Models.SchoolDBContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.Students.AddOrUpdate(
+            p => p.Name, // Use Name as the identifier to avoid duplicates
+            new Student { Name = "Product A",Class = "Math" },
+            new Student { Name = "Product B", Class = "20.0M" },
+            new Student { Name = "Product C", Class = "30.0M" }
+        );
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
         }
     }
 }

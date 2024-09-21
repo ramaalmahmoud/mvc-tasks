@@ -1,0 +1,60 @@
+﻿@model IEnumerable<_19_9_2024.Models.Student>
+
+@{
+    ViewBag.Title = "Student Details";
+    var classId = Model.FirstOrDefault()?.ClassId;
+}
+
+<h2 class="text-center mt-4">@ViewBag.Title</h2>
+
+<div class="text-right mb-3">
+    <a href="@Url.Action("Create", "Students", new { classId = classId })" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Create New
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Classes.Name)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.StudentName)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.StudentAge)
+                </th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Classes.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentAge)
+                    </td>
+                    <td class="text-center">
+                        <a href="@Url.Action("Edit","Students", new { id = item.Id,classId = classId } )" class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="@Url.Action("Details","Students", new { id = item.Id })" class="btn btn-info btn-sm">
+                            <i class="fas fa-info-circle"></i>
+                        </a>
+                        <a href="@Url.Action("Delete", "Students",new { id = item.Id })" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this student?');">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
